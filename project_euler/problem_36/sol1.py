@@ -16,15 +16,11 @@ except NameError:
 def is_palindrome(n):
 	n = str(n)
 
-	if n == n[::-1]:
-		return True
-	else:
-		return False
+	return n == n[::-1]
 
-total = 0
-
-for i in xrange(1, 1000000):
-	if is_palindrome(i) and is_palindrome(bin(i).split('b')[1]):
-		total += i
-
+total = sum(
+	i
+	for i in xrange(1, 1000000)
+	if is_palindrome(i) and is_palindrome(bin(i).split('b')[1])
+)
 print(total)

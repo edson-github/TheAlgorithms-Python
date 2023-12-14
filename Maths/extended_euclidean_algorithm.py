@@ -9,8 +9,12 @@ import sys
 # Finds 2 numbers a and b such that it satisfies
 # the equation am + bn = gcd(m, n) (a.k.a Bezout's Identity)
 def extended_euclidean_algorithm(m, n):
-    a = 0; aprime = 1; b = 1; bprime = 0
-    q = 0; r = 0
+    a = 0
+    aprime = 1
+    b = 1
+    bprime = 0
+    q = 0
+    r = 0
     if m > n:
         c = m; d = n
     else:
@@ -33,11 +37,7 @@ def extended_euclidean_algorithm(m, n):
         b = t - q*b
 
     pair = None
-    if m > n:
-        pair = (a,b)
-    else:
-        pair = (b,a)
-    return pair
+    return (a, b) if m > n else (b, a)
 
 def main():
     if len(sys.argv) < 3:

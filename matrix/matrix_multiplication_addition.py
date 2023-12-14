@@ -3,10 +3,7 @@ def add(matrix_a, matrix_b):
     columns = len(matrix_a[0])
     matrix_c = []
     for i in range(rows):
-        list_1 = []
-        for j in range(columns):
-            val = matrix_a[i][j] + matrix_b[i][j]
-            list_1.append(val)
+        list_1 = [matrix_a[i][j] + matrix_b[i][j] for j in range(columns)]
         matrix_c.append(list_1)
     return matrix_c
 
@@ -34,16 +31,15 @@ def transpose(matrix):
 
 def minor(matrix, row, column):
     minor = matrix[:row] + matrix[row + 1:]
-    minor = [row[:column] + row[column + 1:] for row in minor]
-    return minor
+    return [row[:column] + row[column + 1:] for row in minor]
 
 def determinant(matrix):
     if len(matrix) == 1: return matrix[0][0]
-    
-    res = 0
-    for x in range(len(matrix)):
-        res += matrix[0][x] * determinant(minor(matrix , 0 , x)) * (-1) ** x
-    return res
+
+    return sum(
+        matrix[0][x] * determinant(minor(matrix, 0, x)) * (-1) ** x
+        for x in range(len(matrix))
+    )
 
 def inverse(matrix):
     det = determinant(matrix)

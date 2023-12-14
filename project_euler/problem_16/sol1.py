@@ -5,11 +5,7 @@ string_num = str(num)
 
 list_num = list(string_num)
 
-sum_of_num = 0
-
 print("2 ^",power,"=",num)
 
-for i in list_num:
-    sum_of_num += int(i)
-
+sum_of_num = sum(int(i) for i in list_num)
 print("Sum of the digits are:",sum_of_num)

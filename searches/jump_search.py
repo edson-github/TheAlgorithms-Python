@@ -14,9 +14,7 @@ def jump_search(arr, x):
         prev = prev + 1
         if prev == min(step, n):
             return -1
-    if arr[prev] == x:
-        return prev
-    return -1
+    return prev if arr[prev] == x else -1
 
 
 

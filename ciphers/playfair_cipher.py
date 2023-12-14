@@ -4,10 +4,10 @@ import itertools
 def chunker(seq, size):
     it = iter(seq)
     while True:
-       chunk = tuple(itertools.islice(it, size))
-       if not chunk:
-           return
-       yield chunk
+        if chunk := tuple(itertools.islice(it, size)):
+            yield chunk
+        else:
+            return
 
 
 

@@ -60,9 +60,7 @@ def largest_product(grid):
 if __name__ == '__main__':
 	grid = []
 	with open('grid.txt') as file:
-		for line in file:
-			grid.append(line.strip('\n').split(' '))
-
+		grid.extend(line.strip('\n').split(' ') for line in file)
 	grid = [[int(i) for i in grid[j]] for j in xrange(len(grid))]
 
 	print(largest_product(grid))

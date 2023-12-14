@@ -16,7 +16,7 @@ def lcs_dp(x, y):
     n = len(y)
 
     # declaring the array for storing the dp values
-    L = [[None] * (n + 1) for i in xrange(m + 1)]
+    L = [[None] * (n + 1) for _ in xrange(m + 1)]
     seq = []
 
     for i in range(m + 1):

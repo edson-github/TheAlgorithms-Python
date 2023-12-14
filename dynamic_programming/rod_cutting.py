@@ -24,7 +24,7 @@ def CutRod(n):
         return prices[1]
 
     noCut = prices[n] #The price you get when you don't cut the rod
-    yesCut = [-1 for x in range(n)] #The prices for the different cutting options
+    yesCut = [-1 for _ in range(n)]
 
     for i in range(1,n):
         if(solutions[i] == -1):
@@ -53,6 +53,6 @@ def CutRod(n):
 length = 5
 #The first price, 0, is for when we have no rod.
 prices = [0, 1, 3, 7, 9, 11, 13, 17, 21, 21, 30]
-solutions = [-1 for x in range(length+1)]
+solutions = [-1 for _ in range(length+1)]
 
 print(CutRod(length))

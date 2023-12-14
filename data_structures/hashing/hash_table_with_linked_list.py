@@ -12,12 +12,16 @@ class HashTableWithLinkedList(HashTable):
         self._keys[key] = self.values[key]
 
     def balanced_factor(self):
-        return sum([self.charge_factor - len(slot) for slot in self.values])\
-               / self.size_table * self.charge_factor
+        return (
+            sum(self.charge_factor - len(slot) for slot in self.values)
+            / self.size_table
+        ) * self.charge_factor
     
     def _colision_resolution(self, key, data=None):
-        if not (len(self.values[key]) == self.charge_factor
-                and self.values.count(None) == 0):
+        if (
+            len(self.values[key]) != self.charge_factor
+            or self.values.count(None) != 0
+        ):
             return key
         return super()._colision_resolution(key, data)
 

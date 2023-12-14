@@ -9,7 +9,7 @@ for i in range(num_edges):
 
 edges = sorted(edges, key=lambda edge: edge[3])
 
-parent = [i for i in range(num_nodes)]
+parent = list(range(num_nodes))
 
 def find_parent(i):
 	if(i != parent[i]):

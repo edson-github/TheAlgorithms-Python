@@ -69,10 +69,7 @@ class AVL:
 
                     dad_node = curr_node
 
-                    if node.label < curr_node.label:
-                        curr_node = curr_node.left
-                    else:
-                        curr_node = curr_node.right
+                    curr_node = curr_node.left if node.label < curr_node.label else curr_node.right
                 else:
                     node.height = dad_node.height
                     dad_node.height += 1
@@ -107,10 +104,8 @@ class AVL:
                                     if (left_child.left is not None) else 0)
                     if (h_left > h_right):
                         self.rotate_left(n)
-                        break
                     else:
                         self.double_rotate_right(n)
-                        break
                 else:
                     right_child = n.right
                     if right_child is not None:
@@ -120,10 +115,9 @@ class AVL:
                             if (right_child.left is not None) else 0)
                     if (h_left > h_right):
                         self.double_rotate_left(n)
-                        break
                     else:
                         self.rotate_right(n)
-                        break
+                break
             n = n.parent
 
     def rotate_left(self, node):
@@ -150,9 +144,7 @@ class AVL:
         self.rotate_right(node)
 
     def empty(self):
-        if self.root is None:
-            return True
-        return False
+        return self.root is None
 
     def preShow(self, curr_node):
         if curr_node is not None:

@@ -35,10 +35,7 @@ def bucketSort(myList, bucketSize=DEFAULT_BUCKET_SIZE):
 
     # Initialize buckets
     bucketCount = math.floor((maxValue - minValue) / bucketSize) + 1
-    buckets = []
-    for i in range(0, bucketCount):
-        buckets.append([])
-
+    buckets = [[] for _ in range(0, bucketCount)]
     # For putting values in buckets
     for i in range(0, len(myList)):
         buckets[math.floor((myList[i] - minValue) / bucketSize)].append(myList[i])
@@ -47,9 +44,7 @@ def bucketSort(myList, bucketSize=DEFAULT_BUCKET_SIZE):
     sortedArray = []
     for i in range(0, len(buckets)):
         insertion_sort(buckets[i])
-        for j in range(0, len(buckets[i])):
-            sortedArray.append(buckets[i][j])
-
+        sortedArray.extend(buckets[i][j] for j in range(0, len(buckets[i])))
     return sortedArray
 
 if __name__ == '__main__':

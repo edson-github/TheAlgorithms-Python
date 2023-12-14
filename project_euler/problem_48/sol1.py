@@ -13,9 +13,5 @@ try:
 except NameError:
 	xrange = range
 
-total = 0
-for i in xrange(1, 1001):
-	total += i**i
-
-
+total = sum(i**i for i in xrange(1, 1001))
 print(str(total)[-10:])

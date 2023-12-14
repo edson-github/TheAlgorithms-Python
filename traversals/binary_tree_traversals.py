@@ -30,7 +30,7 @@ def build_tree():
     q.put(tree_node)
     while not q.empty():
         node_found = q.get()
-        print("Enter the left node of %s: " % node_found.data, end="")
+        print(f"Enter the left node of {node_found.data}: ", end="")
         check = raw_input().strip().lower()
         if check == 'n':
             return tree_node
@@ -38,7 +38,7 @@ def build_tree():
         left_node = TreeNode(left_data)
         node_found.left = left_node
         q.put(left_node)
-        print("Enter the right node of %s: " % node_found.data, end="")
+        print(f"Enter the right node of {node_found.data}: ", end="")
         check = raw_input().strip().lower()
         if check == 'n':
             return tree_node

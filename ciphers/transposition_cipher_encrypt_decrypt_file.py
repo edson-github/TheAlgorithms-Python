@@ -9,14 +9,14 @@ def main():
     mode = input('Encrypt/Decrypt [e/d]: ')
 
     if not os.path.exists(inputFile):
-        print('File %s does not exist. Quitting...' % inputFile)
+        print(f'File {inputFile} does not exist. Quitting...')
         sys.exit()
     if os.path.exists(outputFile):
-        print('Overwrite %s? [y/n]' % outputFile)
+        print(f'Overwrite {outputFile}? [y/n]')
         response = input('> ')
         if not response.lower().startswith('y'):
             sys.exit()
-            
+
     startTime = time.time()
     if mode.lower().startswith('e'):
         with open(inputFile) as f:
@@ -29,7 +29,7 @@ def main():
 
     with open(outputFile, 'w') as outputObj:
         outputObj.write(translated)
-    
+
     totalTime = round(time.time() - startTime, 2)
     print(('Done (', totalTime, 'seconds )'))
     

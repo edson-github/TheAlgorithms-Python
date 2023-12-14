@@ -20,10 +20,8 @@ def method_2(boundary, steps):
 	x_i = makePoints(a,b,h)
 	y = 0.0
 	y += (h/3.0)*f(a)
-	cnt = 2
-	for i in x_i:
-		y += (h/3)*(4-2*(cnt%2))*f(i)	
-		cnt += 1
+	for cnt, i in enumerate(x_i, start=2):
+		y += (h/3)*(4-2*(cnt%2))*f(i)
 	y += (h/3.0)*f(b)
 	return y
 
@@ -34,8 +32,7 @@ def makePoints(a,b,h):
 		x = x + h
 
 def f(x): #enter your function here
-	y = (x-0)*(x-0)
-	return y
+	return (x-0)*(x-0)
 
 def main():
 	a = 0.0 #Lower bound of integration

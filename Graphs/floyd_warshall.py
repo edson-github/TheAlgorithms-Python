@@ -13,8 +13,8 @@ def printDist(dist, V):
 
 
 def FloydWarshall(graph, V):
-	dist=[[float('inf') for i in range(V)] for j in range(V)]
-	
+	dist = [[float('inf') for _ in range(V)] for _ in range(V)]
+
 	for i in range(V):
 		for j in range(V):
 			dist[i][j] = graph[i][j]
@@ -33,7 +33,7 @@ def FloydWarshall(graph, V):
 V = int(input("Enter number of vertices: "))
 E = int(input("Enter number of edges: "))
 
-graph = [[float('inf') for i in range(V)] for j in range(V)]
+graph = [[float('inf') for _ in range(V)] for _ in range(V)]
 
 for i in range(V):
 	graph[i][i] = 0.0

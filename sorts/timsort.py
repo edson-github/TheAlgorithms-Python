@@ -1,10 +1,7 @@
 from __future__ import print_function
 def binary_search(lst, item, start, end):
     if start == end:
-        if lst[start] > item:
-            return start
-        else:
-            return start + 1
+        return start if lst[start] > item else start + 1
     if start > end:
         return start
 
@@ -63,9 +60,7 @@ def timsort(lst):
         else:
             new_run.append(lst[i])
 
-    for run in runs:
-        sorted_runs.append(insertion_sort(run))
-
+    sorted_runs.extend(insertion_sort(run) for run in runs)
     for run in sorted_runs:
         sorted_array = merge(sorted_array, run)
 

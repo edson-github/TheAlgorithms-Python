@@ -22,7 +22,7 @@ def interpolation_search(sorted_collection, item):
 
     while left <= right:
         point = left + ((item - sorted_collection[left]) * (right - left)) // (sorted_collection[right] - sorted_collection[left])
-        
+
         #out of range check
         if point<0 or point>=len(sorted_collection):
             return None
@@ -30,11 +30,10 @@ def interpolation_search(sorted_collection, item):
         current_item = sorted_collection[point]
         if current_item == item:
             return point
+        if item < current_item:
+            right = point - 1
         else:
-            if item < current_item:
-                right = point - 1
-            else:
-                left = point + 1
+            left = point + 1
     return None
 
 
@@ -93,6 +92,6 @@ if __name__ == '__main__':
     target = int(target_input)
     result = interpolation_search(collection, target)
     if result is not None:
-        print('{} found at positions: {}'.format(target, result))
+        print(f'{target} found at positions: {result}')
     else:
         print('Not found')

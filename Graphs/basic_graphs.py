@@ -13,11 +13,7 @@ except NameError:
 # Accept No. of Nodes and edges
 n, m = map(int, raw_input().split(" "))
 
-# Initialising Dictionary of edges
-g = {}
-for i in xrange(n):
-    g[i + 1] = []
-
+g = {i + 1: [] for i in xrange(n)}
 """
 --------------------------------------------------------------------------------
     Accepting edges of Unweighted Directed Graphs
@@ -59,7 +55,7 @@ for _ in xrange(m):
 
 
 def dfs(G, s):
-    vis, S = set([s]), [s]
+    vis, S = {s}, [s]
     print(s)
     while S:
         flag = 0
@@ -87,7 +83,7 @@ from collections import deque
 
 
 def bfs(G, s):
-    vis, Q = set([s]), deque([s])
+    vis, Q = {s}, deque([s])
     print(s)
     while Q:
         u = Q.popleft()
@@ -169,8 +165,7 @@ def topo(G, ind=None, Q=[1]):
 
 def adjm():
     n, a = raw_input(), []
-    for i in xrange(n):
-        a.append(map(int, raw_input().split()))
+    a.extend(map(int, raw_input().split()) for _ in xrange(n))
     return a, n
 
 
@@ -190,7 +185,7 @@ def adjm():
 def floy(A_and_n):
     (A, n) = A_and_n
     dist = list(A)
-    path = [[0] * n for i in xrange(n)]
+    path = [[0] * n for _ in xrange(n)]
     for k in xrange(n):
         for i in xrange(n):
             for j in xrange(n):
@@ -243,9 +238,7 @@ def prim(G, s):
 
 def edglist():
     n, m = map(int, raw_input().split(" "))
-    l = []
-    for i in xrange(m):
-        l.append(map(int, raw_input().split(' ')))
+    l = [map(int, raw_input().split(' ')) for _ in xrange(m)]
     return l, n
 
 
@@ -263,7 +256,7 @@ def krusk(E_and_n):
     # Sort edges on the basis of distance
     (E, n) = E_and_n
     E.sort(reverse=True, key=lambda x: x[2])
-    s = [set([i]) for i in range(1, n + 1)]
+    s = [{i} for i in range(1, n + 1)]
     while True:
         if len(s) == 1:
             break
@@ -283,8 +276,4 @@ def krusk(E_and_n):
 
 # find the isolated node in the graph
 def find_isolated_nodes(graph):
-    isolated = []
-    for node in graph:
-        if not graph[node]:
-            isolated.append(node)
-    return isolated
+    return [node for node in graph if not graph[node]]

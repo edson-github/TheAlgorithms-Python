@@ -34,10 +34,7 @@ def newton_raphson(f, x0=0, maxiter=100, step=0.0001, maxerror=1e-6,logsteps=Fal
             break
     else:
         raise ValueError("Itheration limit reached, no converging solution found")
-    if logsteps:
-        #If logstep is true, then log intermediate steps
-        return a, error, steps
-    return a, error
+    return (a, error, steps) if logsteps else (a, error)
  
 if __name__ == '__main__':
     import matplotlib.pyplot as plt

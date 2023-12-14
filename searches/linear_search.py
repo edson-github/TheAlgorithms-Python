@@ -36,10 +36,9 @@ def linear_search(sequence, target):
     >>> linear_search([0, 5, 7, 10, 15], 6)
 
     """
-    for index, item in enumerate(sequence):
-        if item == target:
-            return index
-    return None
+    return next(
+        (index for index, item in enumerate(sequence) if item == target), None
+    )
 
 
 if __name__ == '__main__':
@@ -50,6 +49,6 @@ if __name__ == '__main__':
     target = int(target_input)
     result = linear_search(sequence, target)
     if result is not None:
-        print('{} found at positions: {}'.format(target, result))
+        print(f'{target} found at positions: {result}')
     else:
         print('Not found')

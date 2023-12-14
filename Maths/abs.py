@@ -6,10 +6,7 @@ def absVal(num):
     >>absVal(0)
     0
     """
-    if num < 0:
-        return -num
-    else:
-        return num
+    return -num if num < 0 else num
 
 def main():
     print(absVal(-34)) # = 34
