@@ -74,5 +74,6 @@ if __name__ == '__main__':
     second_word = raw_input('Enter the second word:\n').strip()
 
     result = levenshtein_distance(first_word, second_word)
-    print('Levenshtein distance between {} and {} is {}'.format(
-        first_word, second_word, result))
+    print(
+        f'Levenshtein distance between {first_word} and {second_word} is {result}'
+    )

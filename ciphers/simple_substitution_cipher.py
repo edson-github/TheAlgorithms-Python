@@ -20,9 +20,8 @@ def main():
     print('\n%sion: \n%s' % (mode.title(), translated))
     
 def checkValidKey(key):
-    keyList = list(key)
     lettersList = list(LETTERS)
-    keyList.sort()
+    keyList = sorted(key)
     lettersList.sort()
 
     if keyList != lettersList:

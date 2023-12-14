@@ -17,7 +17,7 @@ def MF_knapsack(i,wt,val,j):
     return F[i][j]
 
 def knapsack(W, wt, val, n):
-    dp = [[0 for i in range(W+1)]for j in range(n+1)]
+    dp = [[0 for _ in range(W+1)] for _ in range(n+1)]
 
     for i in range(1,n+1):
         for w in range(1,W+1):
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     wt = [4,3,2,3]
     n = 4
     w = 6
-    F = [[0]*(w + 1)] + [[0] + [-1 for i in range(w + 1)] for j in range(n + 1)]
+    F = [[0]*(w + 1)] + [[0] + [-1 for _ in range(w + 1)] for _ in range(n + 1)]
     print(knapsack(w,wt,val,n))
     print(MF_knapsack(n,wt,val,w))  # switched the n and w 
     

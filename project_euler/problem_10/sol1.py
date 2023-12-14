@@ -7,11 +7,7 @@ except NameError:
 	xrange = range	#Python 3
 
 def is_prime(n):
-	for i in xrange(2, int(sqrt(n))+1):
-		if n%i == 0:
-			return False
-
-	return True
+	return all(n%i != 0 for i in xrange(2, int(sqrt(n))+1))
 
 def sum_of_primes(n):
 	if n > 2:

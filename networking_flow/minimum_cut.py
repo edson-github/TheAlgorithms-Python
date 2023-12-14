@@ -3,10 +3,9 @@
 def BFS(graph, s, t, parent):
     # Return True if there is node that has not iterated.
     visited = [False]*len(graph)
-    queue=[]
-    queue.append(s)
+    queue = [s]
     visited[s] = True
-    
+
     while queue:
         u = queue.pop(0)
         for ind in range(len(graph[u])):
@@ -15,12 +14,12 @@ def BFS(graph, s, t, parent):
                 visited[ind] = True
                 parent[ind] = u
 
-    return True if visited[t] else False
+    return bool(visited[t])
  
 def mincut(graph, source, sink):
     # This array is filled by BFS and to store path
     parent = [-1]*(len(graph))
-    max_flow = 0 
+    max_flow = 0
     res = []
     temp = [i[:] for i in graph]   # Record orignial cut, copy.
     while BFS(graph, source, sink, parent) :
@@ -34,7 +33,7 @@ def mincut(graph, source, sink):
 
         max_flow +=  path_flow
         v = sink
-        
+
         while(v !=  source):
             u = parent[v]
             graph[u][v] -= path_flow
@@ -42,10 +41,11 @@ def mincut(graph, source, sink):
             v = parent[v]
 
     for i in range(len(graph)):
-        for j in range(len(graph[0])):
-            if graph[i][j] == 0 and temp[i][j] > 0:
-                res.append((i,j))
-
+        res.extend(
+            (i, j)
+            for j in range(len(graph[0]))
+            if graph[i][j] == 0 and temp[i][j] > 0
+        )
     return res
 
 graph = [[0, 16, 13, 0, 0, 0],

@@ -13,9 +13,9 @@ conn, addr = s.accept()#start the actual data flow
 print('connected to:', addr)
 
 while 1:
-    data = conn.recv(1024).decode('ascii')#receive 1024 bytes and decode using ascii
-    if not data:
-        break
-    conn.send((data + ' [ addition by server ]').encode('ascii'))
+    if data := conn.recv(1024).decode('ascii'):
+        conn.send(f'{data} [ addition by server ]'.encode('ascii'))
 
+    else:
+        break
 conn.close()

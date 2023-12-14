@@ -1,9 +1,6 @@
 def main():
 	with open ("grid.txt", "r") as f:
-		l = []
-		for i in range(20):
-			l.append([int(x) for x in f.readline().split()])
-
+		l = [[int(x) for x in f.readline().split()] for _ in range(20)]
 		maximum = 0
 
 		# right
@@ -26,7 +23,7 @@ def main():
 				temp = l[i][j] * l[i+1][j+1] * l[i+2][j+2] * l[i+3][j+3]
 				if temp > maximum:
 					maximum = temp
-				
+
 		#diagonal 2
 		for i in range(17):
 			for j in range(3, 20):

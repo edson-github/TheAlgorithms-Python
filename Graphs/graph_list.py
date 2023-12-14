@@ -4,7 +4,7 @@ from __future__ import print_function
 class Graph:
     def __init__(self, vertex):
         self.vertex = vertex
-        self.graph = [[0] for i in range(vertex)]
+        self.graph = [[0] for _ in range(vertex)]
 
     def add_edge(self, u, v):
         self.graph[u - 1].append(v - 1)

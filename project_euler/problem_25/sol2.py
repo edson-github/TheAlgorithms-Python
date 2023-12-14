@@ -7,4 +7,4 @@ answer = 1
 gen = fibonacci_genrator()
 while len(str(next(gen))) < 1000:
 	answer += 1
-assert answer+1 == 4782
+assert answer == 4781

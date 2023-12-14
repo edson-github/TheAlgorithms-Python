@@ -12,5 +12,5 @@ def collatz_sequence(n):
     sequence.append(n)
   return sequence
 
-answer = max([(len(collatz_sequence(i)), i)  for i in range(1,1000000)])
+answer = max((len(collatz_sequence(i)), i) for i in range(1,1000000))
 print("Longest Collatz sequence under one million is %d with length %d" % (answer[1],answer[0]))

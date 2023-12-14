@@ -18,7 +18,7 @@ goal = [len(grid)-1, len(grid[0])-1] #all coordinates are given in format [y,x]
 cost = 1
 
 #the cost map which pushes the path closer to the goal
-heuristic = [[0 for row in range(len(grid[0]))] for col in range(len(grid))]
+heuristic = [[0 for _ in range(len(grid[0]))] for _ in range(len(grid))]
 for i in range(len(grid)):    
     for j in range(len(grid[0])):            
         heuristic[i][j] = abs(i - goal[0]) + abs(j - goal[1])
@@ -36,9 +36,9 @@ delta = [[-1, 0 ], # go up
 #function to search the path
 def search(grid,init,goal,cost,heuristic):
 
-    closed = [[0 for col in range(len(grid[0]))] for row in range(len(grid))]# the referrence grid
+    closed = [[0 for _ in range(len(grid[0]))] for _ in range(len(grid))]
     closed[init[0]][init[1]] = 1
-    action = [[0 for col in range(len(grid[0]))] for row in range(len(grid))]#the action grid
+    action = [[0 for _ in range(len(grid[0]))] for _ in range(len(grid))]
 
     x = init[0]
     y = init[1]
@@ -50,7 +50,7 @@ def search(grid,init,goal,cost,heuristic):
     resign = False # flag set if we can't find expand
 
     while not found and not resign:
-        if len(cell) == 0:
+        if not cell:
             resign = True
             return "FAIL"
         else:
@@ -62,7 +62,7 @@ def search(grid,init,goal,cost,heuristic):
             g = next[1]
             f = next[0]
 
-            
+
             if x == goal[0] and y == goal[1]:
                 found = True
             else:
@@ -76,10 +76,9 @@ def search(grid,init,goal,cost,heuristic):
                             cell.append([f2, g2, x2, y2])
                             closed[x2][y2] = 1
                             action[x2][y2] = i
-    invpath = []
     x = goal[0]
     y = goal[1]
-    invpath.append([x, y])#we get the reverse path from here
+    invpath = [[x, y]]
     while x != init[0] or y != init[1]:
         x2 = x - delta[action[x][y]][0]
         y2 = y - delta[action[x][y]][1]
@@ -87,13 +86,11 @@ def search(grid,init,goal,cost,heuristic):
         y = y2
         invpath.append([x, y])
 
-    path = []
-    for i in range(len(invpath)):
-    	path.append(invpath[len(invpath) - 1 - i])
+    path = [invpath[len(invpath) - 1 - i] for i in range(len(invpath))]
     print("ACTION MAP")
-    for i in range(len(action)):
-        print(action[i])
-                  
+    for item in action:
+        print(item)
+
     return path
     
 a = search(grid,init,goal,cost,heuristic)

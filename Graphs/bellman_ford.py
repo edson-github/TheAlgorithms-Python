@@ -10,17 +10,17 @@ def printDist(dist, V):
 		print()
 
 def BellmanFord(graph, V, E, src):
-	mdist=[float('inf') for i in range(V)]
+	mdist = [float('inf') for _ in range(V)]
 	mdist[src] = 0.0
-	
-	for i in range(V-1):
+
+	for _ in range(V-1):
 		for j in range(V):
 			u = graph[j]["src"]
 			v = graph[j]["dst"]
 			w = graph[j]["weight"]
 
 			if mdist[u] != float('inf') and mdist[u] + w < mdist[v]:
-				mdist[v] = mdist[u] + w 
+				mdist[v] = mdist[u] + w
 	for j in range(V):
 			u = graph[j]["src"]
 			v = graph[j]["dst"]
@@ -29,7 +29,7 @@ def BellmanFord(graph, V, E, src):
 			if mdist[u] != float('inf') and mdist[u] + w < mdist[v]:
 				print("Negative cycle found. Solution not possible.")
 				return
-	
+
 	printDist(mdist, V)	
 
 			
@@ -38,7 +38,7 @@ def BellmanFord(graph, V, E, src):
 V = int(input("Enter number of vertices: "))
 E = int(input("Enter number of edges: "))
 
-graph = [dict() for j in range(E)]
+graph = [dict() for _ in range(E)]
 
 for i in range(V):
 	graph[i][i] = 0.0
@@ -49,6 +49,6 @@ for i in range(E):
 	dst = int(input("Enter destination:"))
 	weight = float(input("Enter weight:"))
 	graph[i] = {"src": src,"dst": dst, "weight": weight}
-	
+
 gsrc = int(input("\nEnter shortest path source:"))
 BellmanFord(graph, V, E, gsrc)

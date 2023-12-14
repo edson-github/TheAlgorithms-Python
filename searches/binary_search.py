@@ -49,11 +49,10 @@ def binary_search(sorted_collection, item):
         current_item = sorted_collection[midpoint]
         if current_item == item:
             return midpoint
+        if item < current_item:
+            right = midpoint - 1
         else:
-            if item < current_item:
-                right = midpoint - 1
-            else:
-                left = midpoint + 1
+            left = midpoint + 1
     return None
 
 
@@ -156,6 +155,6 @@ if __name__ == '__main__':
     target = int(target_input)
     result = binary_search(collection, target)
     if result is not None:
-        print('{} found at positions: {}'.format(target, result))
+        print(f'{target} found at positions: {result}')
     else:
         print('Not found')

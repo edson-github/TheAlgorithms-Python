@@ -17,13 +17,13 @@ class AssignmentUsingBitmask:
     def __init__(self,task_performed,total):
         
         self.total_tasks = total    #total no of tasks (N)
-        
+
         # DP table will have a dimension of (2^M)*N
         # initially all values are set to -1
-        self.dp = [[-1 for i in range(total+1)] for j in range(2**len(task_performed))]
-        
+        self.dp = [[-1 for _ in range(total+1)] for _ in range(2**len(task_performed))]
+
         self.task = defaultdict(list)   #stores the list of persons for each task
-        
+
         #finalmask is used to check if all persons are included by setting all bits to 1
         self.finalmask = (1<<len(task_performed)) - 1
     

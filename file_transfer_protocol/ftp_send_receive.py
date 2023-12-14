@@ -21,7 +21,7 @@ Enter the location of the file where the file is received
 def ReceiveFile():
 	FileName = 'example.txt'   """ Enter the location of the file """
 	with open(FileName, 'wb') as LocalFile:
-		ftp.retrbinary('RETR ' + FileName, LocalFile.write, 1024)
+		ftp.retrbinary(f'RETR {FileName}', LocalFile.write, 1024)
 	ftp.quit()
 
 """
@@ -32,5 +32,5 @@ The file send will be send to the current working directory
 def SendFile():
 	FileName = 'example.txt'   """ Enter the name of the file """
 	with open(FileName, 'rb') as LocalFile:
-		ftp.storbinary('STOR ' + FileName, LocalFile)
+		ftp.storbinary(f'STOR {FileName}', LocalFile)
 	ftp.quit()

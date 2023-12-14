@@ -31,8 +31,7 @@ def makePoints(a,b,h):
 		x = x + h
 		
 def f(x): #enter your function here
-	y = (x-0)*(x-0)
-	return y
+	return (x-0)*(x-0)
 
 def main():
 	a = 0.0 #Lower bound of integration

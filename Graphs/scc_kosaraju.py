@@ -2,10 +2,10 @@ from __future__ import print_function
 # n - no of nodes, m - no of edges
 n, m = list(map(int,input().split()))
 
-g = [[] for i in range(n)] #graph
-r = [[] for i in range(n)] #reversed graph
+g = [[] for _ in range(n)]
+r = [[] for _ in range(n)]
 # input graph data (edges)
-for i in range(m):
+for _ in range(m):
     u, v = list(map(int,input().split()))
     g[u].append(v)
     r[v].append(u)

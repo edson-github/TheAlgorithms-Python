@@ -43,11 +43,8 @@ def sort(a, N, up):
 
 
 # Driver code to test above
-a = []
-
 n = int(input())
-for i in range(n):
-    a.append(int(input()))
+a = [int(input()) for _ in range(n)]
 up = 1
 
 sort(a, n, up)
